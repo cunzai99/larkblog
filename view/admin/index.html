@@ -1,0 +1,144 @@
+<section id="main" class="column">
+
+    <h4 class="alert_info">Welcome to the free MediaLoot admin panel template, this could be an informative message.</h4>
+
+    <article class="module width_full">
+        <header><h3>Stats</h3></header>
+        <div class="module_content">
+            <article class="stats_graph">
+                <img src="" width="520" height="140" alt="" />
+            </article>
+
+            <article class="stats_overview">
+                <div class="overview_today">
+                    <p class="overview_day">Today</p>
+                    <p class="overview_count">1,876</p>
+                    <p class="overview_type">Hits</p>
+                    <p class="overview_count">2,103</p>
+                    <p class="overview_type">Views</p>
+                </div>
+                <div class="overview_previous">
+                    <p class="overview_day">Yesterday</p>
+                    <p class="overview_count">1,646</p>
+                    <p class="overview_type">Hits</p>
+                    <p class="overview_count">2,054</p>
+                    <p class="overview_type">Views</p>
+                </div>
+            </article>
+            <div class="clear"></div>
+        </div>
+    </article><!-- end of stats article -->
+
+    <article class="module width_3_quarter">
+        <header><h3 class="tabs_involved">Content Manager</h3>
+        <ul class="tabs">
+               <li><a href="#tab1">Posts</a></li>
+            <li><a href="#tab2">Comments</a></li>
+        </ul>
+        </header>
+
+        <div class="tab_container">
+            <div id="tab1" class="tab_content">
+                <table class="tablesorter" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Entry Name</th>
+                        <th>Category</th>
+                        <th>Reprinted</th>
+                        <th>Created On</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <{foreach from=$post_list item=item}>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><{$item.id}></td>
+                        <td><a href="<{$item.url}>" target="_blank"><{$item.title}></a></td>
+                        <td><{$item.catname}></td>
+                        <td>
+                            <{if $item.reprinted == 1}>
+                                是
+                            <{else}>
+                                <span style="color:#C0C0C0">否</span>
+                            <{/if}>
+                        </td>
+                        <td>5th April 2011</td>
+                        <td>
+                            <{if $item.status == 1}>
+                                正常
+                            <{else}>
+                                <span style="color:#FF0000">已删除</span>
+                            <{/if}>
+                        </td>
+                        <td>
+                            <a href="/admin/post/edit?id=<{$item.id}>">
+                                <input type="image" src="<{$img_path}>icn_edit.png" title="Edit">
+                            </a>
+                            <a href="/admin/post/delete?id=<{$item.id}>">
+                                <input type="image" src="<{$img_path}>icn_trash.png" title="Trash">
+                            </a>
+                        </td>
+                    </tr>
+                    <{/foreach}>
+                </tbody>
+                </table>
+            </div><!-- end of #tab1 -->
+
+            <div id="tab2" class="tab_content">
+                <table class="tablesorter" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Comment</th>
+                        <th>Posted by</th>
+                        <th>Posted On</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <{foreach from=$comment_list item=item}>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><{$item.id}></td>
+                        <td><{$item.content}></td>
+                        <td>Mark Corrigan</td>
+                        <td>5th April 2011</td>
+                        <td><input type="image" src="<{$img_path}>icn_edit.png" title="Edit"><input type="image" src="<{$img_path}>icn_trash.png" title="Trash"></td>
+                    </tr>
+                    <{/foreach}>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+
+    <article class="module width_quarter">
+        <header><h3>Messages</h3></header>
+        <div class="message_list">
+            <div class="module_content">
+                <div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+                <p><strong>John Doe</strong></p></div>
+                <div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+                <p><strong>John Doe</strong></p></div>
+                <div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+                <p><strong>John Doe</strong></p></div>
+                <div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+                <p><strong>John Doe</strong></p></div>
+                <div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+                <p><strong>John Doe</strong></p></div>
+            </div>
+        </div>
+        <footer>
+            <form class="post_message">
+                <input type="text" value="Message" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+                <input type="submit" class="btn_post_message" value=""/>
+            </form>
+        </footer>
+    </article><!-- end of messages article -->
+
+</section>

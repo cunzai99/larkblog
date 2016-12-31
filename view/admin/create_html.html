@@ -1,0 +1,12 @@
+<section id="main" class="column">
+    <article class="module width_full">
+        <form action="/admin/create_html/save?type=<{$type}>" method="post">
+            <header><h3>生成<{if $type == 'index'}>首页<{elseif $type == 'list'}>列表<{else}>内容<{/if}>静态文件</h3></header>
+            <div class="module_content">
+                <input type="submit" value="开始生成" class="alt_btn">
+                <div class="clear"></div>
+            </div>
+        </form>
+    </article>
+    <div class="spacer"></div>
+</section>

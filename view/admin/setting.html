@@ -1,0 +1,48 @@
+<section id="main" class="column">
+    <article class="module width_full">
+        <form action="/admin/setting/save" method="post">
+            <header><h3>System Setting</h3></header>
+            <div class="module_content">
+                <fieldset>
+                    <label>网站名称</label>
+                    <input type="text" name="site_name" value="<{if isset($setting_info['baseic']['site_name'])}><{$setting_info['baseic']['site_name']['content']}><{/if}>">
+                </fieldset>
+                <fieldset>
+                    <label>Title（网站标题）</label>
+                    <input type="text" name="site_title" value="<{if isset($setting_info['baseic']['site_title'])}><{$setting_info['baseic']['site_title']['content']}><{/if}>">
+                </fieldset>
+                <fieldset>
+                    <label>Mate Keywords（网页关键词）</label>
+                    <input type="text" name="site_mate_keywords" value="<{if isset($setting_info['baseic']['site_mate_keywords'])}><{$setting_info['baseic']['site_mate_keywords']['content']}><{/if}>">
+                </fieldset>
+                <fieldset>
+                    <label>Mate Description（网页描述）</label>
+                    <input type="text" name="site_mate_description" value="<{if isset($setting_info['baseic']['site_mate_description'])}><{$setting_info['baseic']['site_mate_description']['content']}><{/if}>">
+                </fieldset>
+                <fieldset>
+                    <label>版权信息</label>
+                    <input type="text" name="site_copyright_info" value="<{if isset($setting_info['baseic']['site_copyright_info'])}><{$setting_info['baseic']['site_copyright_info']['content']}><{/if}>">
+                </fieldset>
+                <fieldset>
+                    <label>网站ICP备案序号</label>
+                    <input type="text" name="site_icp" value="<{if isset($setting_info['baseic']['site_icp'])}><{$setting_info['baseic']['site_icp']['content']}><{/if}>">
+                </fieldset>
+                <fieldset>
+                    <label>生成Html</label>
+                    <div class="create_html">
+                        <input type="radio" name="create_html" value="1" <{if isset($setting_info['baseic']['create_html']) && $setting_info['baseic']['create_html']['content'] == 1}>checked<{/if}>> 是
+                        <input type="radio" name="create_html" value="0" <{if isset($setting_info['baseic']['create_html']) && $setting_info['baseic']['create_html']['content'] == 0}>checked<{/if}>> 否
+                    </div>
+                </fieldset>
+                <div class="clear"></div>
+            </div>
+            <footer>
+                <div class="submit_link">
+                    <input type="submit" value="Publish" class="alt_btn">
+                    <input type="submit" value="Reset">
+                </div>
+            </footer>
+        </form>
+    </article>
+    <div class="spacer"></div>
+</section>

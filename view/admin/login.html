@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login demo</title>
+    <!-- Bootstrap core CSS -->
+    <link href="<{$css_path}>bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- Custom styles for this template -->
+    <link href="<{$css_path}>login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="container">
+		<form class="form-signin" method="POST" action="<{build_url('login', 'auth', 'admin')}>">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<input type="text" class="form-control" placeholder="Email address" name='username' required autofocus>
+			<input type="password" class="form-control" placeholder="Password" name='password' required>
+			<label class="checkbox">
+				<input type="checkbox" value="remember-me"> Remember me
+			</label>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<section id="main" class="column">
+    <article class="module width_full">
+        <form action="/admin/category/save" method="post">
+            <header><h3>新增分类</h3></header>
+            <div class="module_content">
+                <fieldset>
+                    <label>分类名称</label>
+                    <input type="text" name="catname" value="<{if isset($info.catname)}><{$info.catname}><{/if}>">
+                </fieldset>
+                <fieldset>
+                    <label>英文名称</label>
+                    <input type="text" name="letter" value="<{if isset($info.letter)}><{$info.letter}><{/if}>">
+                </fieldset>
+                <fieldset style="width:48%; float:left; margin-right: 3%;">
+                    <label>上级分类</label>
+                    <select style="width:92%;" name="pid">
+                        <option value='0'>--上级分类--</option>
+                        <{foreach from=$category_list item=item}>
+                            <option value="<{$item.catid}>" <{if isset($info.catid) && $info.catid == $item.catid}>disabled="true" style="color:#C0C0C0;"<{/if}> <{if isset($info.pid) && $info.pid == $item.catid}>selected<{/if}>><{$item.catname}></option>
+                        <{/foreach}>
+                    </select>
+                </fieldset>
+                <div class="clear"></div>
+            </div>
+            <footer>
+                <div class="submit_link">
+                    <input type="hidden" name="catid" value="<{if isset($info.catid)}><{$info.catid}><{/if}>">
+                    <input type="submit" value="Publish" class="alt_btn">
+                    <input type="submit" value="Reset">
+                </div>
+            </footer>
+        </form>
+    </article>
+    <div class="spacer"></div>
+</section>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title><{if isset($title)}><{$title}> - <{/if}><{$setting_info.site_name.content}> - 菜鸟程序员</title>
+<meta name="description" content="<{$setting_info.site_mate_description.content}>" />
+<meta name="keywords" content="<{$setting_info.site_mate_keywords.content}>" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="<{$css_path}>style.css" />
+<script type="text/javascript" src="<{_JS_PATH_}>jquery.js"></script>
+<script type="text/javascript" src="<{$js_path}>modernizr-1.5.min.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		<header>
+			<div id="logo">
+				<div id="logo_text">
+					<!-- class="logo_colour", allows you to change the colour of the text -->
+					<h1>
+						<a href="/"><{$setting_info.site_name.content}></span></a>
+					</h1>
+					<h2>朝牛的方向努力.</h2>
+				</div>
+			</div>
+			<nav>
+				<div id="menu_container">
+					<ul class="sf-menu" id="nav">
+						<li><a href="/">Home</a></li>
+						<li><a href="/">Examples</a></li>
+						<li><a href="/">A Page</a></li>
+						<li><a href="/">Another Page</a></li>
+						<li><a href="#">Example Drop Down</a>
+							<ul>
+								<li><a href="#">Drop Down One</a></li>
+								<li><a href="#">Drop Down Two</a>
+									<ul>
+										<li><a href="#">Sub Drop Down One</a></li>
+										<li><a href="#">Sub Drop Down Two</a></li>
+										<li><a href="#">Sub Drop Down Three</a></li>
+										<li><a href="#">Sub Drop Down Four</a></li>
+										<li><a href="#">Sub Drop Down Five</a></li>
+									</ul></li>
+								<li><a href="#">Drop Down Three</a></li>
+								<li><a href="#">Drop Down Four</a></li>
+								<li><a href="#">Drop Down Five</a></li>
+							</ul></li>
+						<li><a href="/">Contact Us</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<div id="site_content">
+		    <div id="sidebar_container">
+		        <img class="paperclip" src="/view/test/img/paperclip.png" alt="paperclip" />
+		        <div class="sidebar">
+		            <h3>Latest News</h3>
+		            <h4>New Website Launched</h4>
+		            <h5>January 1st, 2012</h5>
+		            <p>
+		                2012 sees the redesign of our website. Take a look around and let
+		                us know what you think.<br /> <a href="#">Read more</a>
+		            </p>
+		        </div>
+		        <img class="paperclip" src="/view/test/img/paperclip.png" alt="paperclip" />
+		        <div class="sidebar">
+		            <h3>Category</h3>
+		            <ul>
+		                <{foreach from=$category_list item=item}>
+		                <li><a href="<{$item.url}>"><{$item.catname}></a></li>
+		                <{if isset($item.children)}>
+		                <{foreach from=$item.children key=k item=v}>
+		                <li>&nbsp;&nbsp;&nbsp;├─ <a href="<{$v.url}>"><{$v['catname']}></a></li>
+		                <{/foreach}>
+		                <{/if}>
+		                <{/foreach}>
+		            </ul>
+		        </div>
+		        <img class="paperclip" src="/view/test/img/paperclip.png" alt="paperclip" />
+		        <div class="sidebar">
+		            <h3>Useful Links</h3>
+		            <ul>
+		                <li><a href="#">First Link</a></li>
+		                <li><a href="#">Another Link</a></li>
+		                <li><a href="#">And Another</a></li>
+		                <li><a href="#">Last One</a></li>
+		            </ul>
+		        </div>
+		    </div>
+			<{$content}>
+		</div>
+		<div id="scroll">
+			<a title="Scroll to the top" class="top" href="#"><img src="<{$img_path}>top.png" alt="top" /></a>
+		</div>
+		<footer>
+			<p>
+				<a href="/">Home</a> |
+				<a href="/">Examples</a> |
+				<a href="/">A Page</a> |
+				<a href="/">Another Page</a> |
+				<a href="/">Contact Us</a>
+			</p>
+			<p>
+				© <a href="" rel="nofollow"><{$setting_info.site_copyright_info.content}></a><span>|</span><a href="" rel="nofollow"><{$setting_info.site_icp.content}></a><span>
+			</p>
+		</footer>
+	</div>
+	<!-- javascript at the bottom for fast page loading -->
+	<script type="text/javascript" src="<{_JS_PATH_}>jquery.js"></script>
+	<script type="text/javascript" src="<{$js_path}>jquery.easing-sooper.js"></script>
+	<script type="text/javascript" src="<{$js_path}>jquery.sooperfish.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('ul.sf-menu').sooperfish();
+			$('.top').click(function() {
+				$('html, body').animate({
+					scrollTop : 0
+				}, 'fast');
+				return false;
+			});
+		});
+	</script>
+</body>
+</html>

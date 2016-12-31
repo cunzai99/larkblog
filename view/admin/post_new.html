@@ -1,0 +1,68 @@
+<section id="main" class="column">
+    <article class="module width_full">
+        <form action="/admin/post/save" method="post">
+            <header><h3>新增文章</h3></header>
+            <div class="module_content">
+                <fieldset>
+                    <label>标题</label>
+                    <input type="text" name="title" value="<{if isset($info.title)}><{$info.title}><{/if}>">
+                </fieldset>
+                <fieldset>
+                    <label>摘要</label>
+                    <textarea rows="6" name="summary" style="float:left;"><{if isset($info.summary)}><{$info.summary}><{/if}></textarea>
+                </fieldset>
+                <fieldset>
+                    <label>内容</label>
+                    <textarea rows="12" id="editor" name="content" style="float:left;">
+                        <{if isset($info.content)}><{$info.content}><{/if}>
+                    </textarea>
+                </fieldset>
+                <fieldset style="width:48%; float:left; margin-right: 3%;">
+                    <label>所属分类</label>
+                    <select style="width:92%;" name="catid">
+                        <{foreach from=$category_list item=item}>
+                            <{if empty($item['children'])}>
+                                <option value="<{$item.catid}>" <{if isset($info) && $info.catid == $item.catid}>selected=true<{/if}>><{$item.catname}></option>
+                            <{else}>
+                                <option value="<{$item.catid}>" disabled="true" style="color:#C0C0C0;"><{$item.catname}></option>
+                                <{foreach from=$item['children'] item=c_item}>
+                                <option value="<{$c_item.catid}>" style="text-indent:2em;" <{if isset($info) && $info.catid == $c_item.catid}>selected=true<{/if}>><{$c_item.catname}></option>
+                                <{/foreach}>
+                            <{/if}>
+                        <{/foreach}>
+                    </select>
+                </fieldset>
+                <fieldset style="width:48%; float:left;">
+                    <label>Tags</label>
+                    <input type="text" name="tags" style="width:92%;">
+                </fieldset>
+                <div class="clear"></div>
+            </div>
+            <footer>
+                <div class="submit_link">
+                    是否转载:<input type="checkbox" name="reprinted" value="1" <{if isset($info.reprinted) && $info.reprinted}>checked=true<{/if}>>
+                    <select name="status">
+                        <option value="2" <{if isset($info) && $info.status == 2}>selected=true<{/if}>>Draft</option>
+                        <option value="1" <{if isset($info) && $info.status == 1}>selected=true<{/if}>>Published</option>
+                    </select>
+                    <{if isset($info.id)}>
+                    <input type="hidden" name="id" value="<{$info.id}>">
+                    <input type="hidden" name="page" value="<{$page}>">
+                    <{/if}>
+                    <input type="submit" value="Publish" class="alt_btn">
+                    <input type="submit" value="Reset">
+                </div>
+            </footer>
+        </form>
+    </article>
+    <div class="spacer"></div>
+</section>
+<script type="text/javascript" src="<{_JS_PATH_}>ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="<{_JS_PATH_}>ueditor/ueditor.all.min.js"></script>
+<script>
+    var ue = UE.getEditor('editor');
+    // var editor = new baidu.editor.ui.Editor({
+    //     initialContent: content
+    // });
+    // editor.render("editor");
+</script>

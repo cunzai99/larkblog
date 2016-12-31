@@ -1,0 +1,50 @@
+<script src="<{_JS_PATH_}>ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+<link rel="stylesheet" type="text/css" href="<{_JS_PATH_}>ueditor/third-party/SyntaxHighlighter/shCoreDefault.css">
+
+<div class="content">
+    <h1 style="margin: 15px 0 0 -5px;"><{$post_info.title}></h1>
+    <div style="width:700px; word-break:break-all; margin-left:10px;"><{$post_info.content}></div>
+    <div style="border-bottom:1px solid #E8E8E8; width: 720px; padding:50px 0 10px 0;"></div>
+    <div id="comments" style="padding: 15px 0 0 10px;">
+        <h2 class="title">评论</h2>
+        <div id='comment_list'>
+            <!--
+            <div class="comment first odd clearfix">
+                <ul class="links inline">
+                    <li class="comment_forbidden first last">
+                        <span><a href="">登录</a> - 评论</span>
+                    </li>
+                </ul>
+                <div class="submitted">
+                    <span>
+                        <a title="查看用户资料" href="javascript:void(0)">longshu</a>
+                    </span>
+                </div>
+                <div class="content">
+                    123456
+                    123445
+                    <p class="submitted">
+                        <span>2014.10.24</span>
+                    </p>
+                </div>
+            </div>
+            -->
+         </div>
+        <div>
+            <div>
+                <div style="padding:10px 0 10px 0;">
+                    <font color="#ff0000">* </font>昵称：<input type="text" value="" id="nickname" />
+                </div>
+                <font color="#ff0000">* </font><textarea rows="5" cols="60" id="comment_body"></textarea>
+                <input type="hidden" value="<{$post_info['id']}>" id="post_id"/>
+            </div>
+            <input type="button" value="发表评论" id="js_btn_comment_save" style="background-color:#9ac0cd; height:25px; margin-top:10px; width:70px;" />
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var post_id = '<{$post_info['id']}>';
+    SyntaxHighlighter.highlight();
+</script>
+<script type="text/javascript" src="<{$js_path}>show.js"></script>

@@ -1,0 +1,4 @@
+# robots.txt for LarkPHP
+
+User-agent: *
+Disallow: /
