@@ -142,15 +142,15 @@ class post extends Model
         $_data['author']      = $_SESSION['nickname'];
         $_data['author_id']   = $_SESSION['id'];
         $_data['create_time'] = time();
-        $_data['status']      = isset($data['is_show']) ? intval($data['is_show']) : 1;
-        $_data['reprinted']   = $data['reprinted'];
+        $_data['status']      = isset($data['status']) ? intval($data['status']) : 1;
+        $_data['reprinted']   = isset($data['reprinted']) ? $data['reprinted'] : 0;
 
         $post_id = $this->add($_data);
         if($post_id){
             $model_post_content = $this->loadModel('post_content');
             $_data = array();
             $_data['pid']     = $post_id;
-            $_data['content'] = stripslashes($content);
+            $_data['content'] = $content;
 
             $res = $model_post_content->add($_data);
             if(!$res){
@@ -170,17 +170,26 @@ class post extends Model
     public function update($data)
     {
         $id=$data['id'];
-        $summary = isset($data['summary']) ? trim($data['summary']) : (isset($data['content']) ? strip_tags(mb_substr($data['content'], 0, 255)) : '');
+
+        if(isset($data['summary'])){
+            $summary = trim($data['summary']);
+            if(!$summary){
+                $summary = isset($data['content']) ? strip_tags($data['content']) : '';
+            }
+
+            $summary = substr($summary, 0, 85);
+        }
 
         if(isset($data['catid']))     $_data['catid']     = $data['catid'];
         if(isset($data['title']))     $_data['title']     = $data['title'];
         if(isset($data['url']))       $_data['url']       = $data['url'];
-        if(isset($summary)&&$summary) $_data['summary']   = $summary;
+        if(isset($summary))           $_data['summary']   = $summary;
         if(isset($data['status']))    $_data['status']    = $data['status'];
-        if(isset($data['reprinted'])) $_data['reprinted'] = $data['reprinted'];
+        $_data['reprinted']   = isset($data['reprinted']) ? $data['reprinted'] : 0;
         $_data['update_time'] = time();
         //var_dump($_data);
         //exit;
+        $this->startTrans();
         $res = $this->where(array('id'=>$id))->save($_data);
         if($res){
             $model_post_content = $this->loadModel('post_content');
@@ -191,6 +200,7 @@ class post extends Model
                 $res = $model_post_content->update($_data);
             }
         }
+        $this->rollback();
 
         if($res){
             return true;

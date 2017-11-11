@@ -68,7 +68,7 @@ class postContent extends Model
     {
         $pid   = trim($data['pid']);
         $_data = array();
-        if(isset($data['content'])) $_data['content'] = stripslashes($data['content']);
+        if(isset($data['content'])) $_data['content'] = $data['content'];
         $res   = $this->where(array('pid'=>$pid))->save($_data);
 
         if($res){
